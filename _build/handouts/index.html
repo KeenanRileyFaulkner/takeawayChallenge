@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <title>Takeaway | Devmountain Foundations</title>
+
+      <link
+        href="_static/pygments.css"
+        rel="stylesheet"
+        type="text/css"
+      />
+      <link href="_static/devmountain.css" rel="stylesheet" type="text/css" />
+          <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+          <link rel="stylesheet" type="text/css" href="_static/devmountain.css" />
+          <link rel="stylesheet" type="text/css" href="_static/plot_directive.css" />
+          <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+
+      <script src="_static/pdfobject.min.js"></script>
+      
+  </head>
+  <body>
+      <div id="handouts-container">
+        <header id="page-header">
+            <p id="project-title">Devmountain Foundations</p>
+            <p id="page-title">Takeaway</p>
+              <p id="backlink">
+                <a href="/"> &laquo; Back to Homepage </a>
+              </p>
+        </header>
+
+        <nav id="page-toc"><ul>
+<li><a class="reference internal" href="#">Takeaway</a><ul>
+<li><a class="reference internal" href="#your-challenge">Your Challenge</a></li>
+<li><a class="reference internal" href="#code">Code</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+
+        <main id="page-content">
+            <section class="section" id="takeaway">
+<h1>Takeaway</h1>
+<dl class="field-list simple">
+<dt class="field-odd">Difficulty</dt>
+<dd class="field-odd"><p>Harder</p>
+</dd>
+<dt class="field-even">Concepts</dt>
+<dd class="field-even"><p>Game Theory</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>There’s a game, “takeaway”, that is played by two players, using a number of stones.</p>
+<p>The first player goes first. She can take 2, 3, or 5 stones from the pool. The second player goes next; she can also remove 2, 3, or 5 stones. The first player then goes, and so on.</p>
+<p>If a player is unable to move (there are fewer than 2 stones), they lose.</p>
+<section class="section" id="your-challenge">
+<h2>Your Challenge</h2>
+<p>Imagine that both players have “perfect play” — that is, they always make the best possible move. Then, you can absolutely determine who would win a game with n stones.</p>
+<p>For example:</p>
+<dl>
+<dt>1</dt><dd><p>Player #1 cannot move, so player #2 win</p>
+</dd>
+<dt>2</dt><dd><p>Player #1 takes 2 stones, and player #2 cannot move</p>
+</dd>
+<dt>3</dt><dd><p>Player #1 takes either 2 or 3 stones; either way, player #2 cannot move</p>
+</dd>
+<dt>4</dt><dd><p>Player #1 has two choices, one of which wins:</p>
+<p>she takes 2 stones, leaving 2 (a win for player #2)</p>
+<p>she takes 3 stones, leaving 1 (a win for player #1)</p>
+</dd>
+<dt>5</dt><dd><p>Player #1 has three choices, one of which wins:</p>
+<p>she takes 2 stones, leaving 3 (a win for player #2)</p>
+<p>she takes 3 stones, leaving 2 (a win for player #2)</p>
+<p>she takes 5 stones, leaving 0 (a win for player #1)</p>
+</dd>
+<dt>6</dt><dd><p>Player #1 has three choices, one of which wins;</p>
+<p>she takes 2 stones, leaving 4 (a win for player #2)</p>
+<p>she takes 3 stones, leaving 3 (a win for player #2)</p>
+<p>she takes 5 stones, leaving 1 (a win for player #1)</p>
+</dd>
+<dt>7</dt><dd><p>Player #1 has three choices, but none will win:</p>
+<p>she takes 2 stones, leaving 5 (a win for player #2)</p>
+<p>she takes 3 stones, leaving 4 (a win for player #2)</p>
+<p>she takes 5 stones, leaving 2 (a win for player #2)</p>
+</dd>
+<dt>8</dt><dd><p>Player #1 has three choices, but none will win:</p>
+<p>she takes 2 stones, leaving 6 (a win for player #2)</p>
+<p>she takes 3 stones, leaving 5 (a win for player #2)</p>
+<p>she takes 5 stones, leaving 3 (a win for player #2)</p>
+</dd>
+<dt>9</dt><dd><p>Player #1 has three choices, with one being a win:</p>
+<p>she takes 2 stones, leaving 7 (a win for player #1)</p>
+<p>she takes 3 stones, leaving 6 (a win for player #2)</p>
+<p>she takes 5 stones, leaving 4 (a win for player #2)</p>
+</dd>
+<dt>10</dt><dd><p>Player #1 has three choices, with two being wins:</p>
+<p>she takes 2 stones, leaving 8 (a win for player #1)</p>
+<p>she takes 3 stones, leaving 7 (a win for player #1)</p>
+<p>she takes 5 stones, leaving 5 (a win for player #2)</p>
+</dd>
+</dl>
+<p>Remember: both players make the best possible moves, so if player #1 has a winning strategy, she will use it (and player #2 will defend as well as possible).</p>
+</section>
+<section class="section" id="code">
+<h2>Code</h2>
+<p>We’ve written a function which takes one parameter, n, the number of stones in the game. It should return <code class="docutils literal notranslate"><span class="pre">true</span></code> if the active play could win a game starting with that number of stones and <code class="docutils literal notranslate"><span class="pre">false</span></code> if not. (<em>Hint</em>: Use recursion)</p>
+<p>For example:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">canWin</span><span class="p">(</span><span class="mf">1</span><span class="p">)</span>
+<span class="c1">// false</span>
+
+<span class="nx">canWin</span><span class="p">(</span><span class="mf">2</span><span class="p">)</span>
+<span class="c1">// true</span>
+
+<span class="nx">canWin</span><span class="p">(</span><span class="mf">3</span><span class="p">)</span>
+<span class="c1">// true</span>
+
+<span class="nx">canWin</span><span class="p">(</span><span class="mf">4</span><span class="p">)</span>
+<span class="c1">// true</span>
+
+<span class="nx">canWin</span><span class="p">(</span><span class="mf">5</span><span class="p">)</span>
+<span class="c1">// true</span>
+
+<span class="nx">canWin</span><span class="p">(</span><span class="mf">6</span><span class="p">)</span>
+<span class="c1">// true</span>
+
+<span class="nx">canWin</span><span class="p">(</span><span class="mf">7</span><span class="p">)</span>
+<span class="c1">// false</span>
+
+<span class="nx">canWin</span><span class="p">(</span><span class="mf">8</span><span class="p">)</span>
+<span class="c1">// false</span>
+
+<span class="nx">canWin</span><span class="p">(</span><span class="mf">9</span><span class="p">)</span>
+<span class="c1">// true</span>
+
+<span class="nx">canWin</span><span class="p">(</span><span class="mf">10</span><span class="p">)</span>
+<span class="c1">// true</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+        </main>
+
+        <footer id="page-footer">
+            <p>&copy; 2021 Devmountain</p>
+        </footer>
+      </div>
+
+      <script src="_static/main.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+  </body>
+</html>
